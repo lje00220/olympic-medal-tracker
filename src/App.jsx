@@ -17,8 +17,19 @@ function App() {
 
   const [region, setRegions] = useState([]);
   const handleForm = (e) => {
+    let isInclude = false;
     e.preventDefault();
-    setRegions([...region, addRegion]);
+    region.map((x) => {
+      if (x.region === addRegion.region) {
+        alert("이미 있어");
+        isInclude = true;
+      }
+    });
+    if (addRegion.region === "") {
+      alert("국가 이름을 입력해주세요");
+      return;
+    }
+    isInclude || setRegions([...region, addRegion]);
   };
 
   return (
@@ -89,9 +100,7 @@ function App() {
               </tbody>
             </table>
           </form>
-          <RegionList region={region}>
-            {/* 아직 추가된 국가가 없습니다. 메달을 추적하세요! */}
-          </RegionList>
+          <MedalList region={region}></MedalList>
         </div>
       </div>
     </div>
@@ -100,7 +109,10 @@ function App() {
 
 export default App;
 
-const RegionList = (p) => {
+const MedalList = (p) => {
+  if (p.region.length === 0) {
+    return <p>아직 추가된 국가가 없습니다. 메달을 추적하세요!</p>;
+  }
   return (
     <table className="region-list">
       <thead>
@@ -122,17 +134,19 @@ const RegionList = (p) => {
 const AddRegion = (p) => {
   return (
     <>
-      {p.region.map((x, index) => (
-        <tr key={index}>
-          <td>{x.region}</td>
-          <td>{x.goldMedal}</td>
-          <td>{x.silverMedal}</td>
-          <td>{x.bronzeMedal}</td>
-          <td>
-            <button>삭제</button>
-          </td>
-        </tr>
-      ))}
+      {p.region
+        .sort((x, y) => y.goldMedal - x.goldMedal)
+        .map((x, index) => (
+          <tr key={index}>
+            <td>{x.region}</td>
+            <td>{x.goldMedal}</td>
+            <td>{x.silverMedal}</td>
+            <td>{x.bronzeMedal}</td>
+            <td>
+              <button className="deleteBtn">삭제</button>
+            </td>
+          </tr>
+        ))}
     </>
   );
 };
