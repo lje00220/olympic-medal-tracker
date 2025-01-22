@@ -37,4 +37,4 @@ const AddRegion = ({ region, setRegions, sortValue }) => {
   );
 };
 
-export { AddRegion };
+export default AddRegion;

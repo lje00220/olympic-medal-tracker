@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MedalList } from "./MedalList.jsx";
+import MedalList from "./MedalList.jsx";
 import MedalForm from "./MedalForm.jsx";
 import SortBtn from "./SortBtn.jsx";
 
@@ -11,8 +11,13 @@ const MedalTable = () => {
     bronzeMedal: 0,
   });
 
-  const [region, setRegions] = useState([]);
+  const [region, setRegions] = useState([
+    ...JSON.parse(localStorage.getItem("list")),
+  ]);
+
   const [sortValue, setSortValue] = useState("goldSort");
+
+  localStorage.setItem("list", JSON.stringify(region));
 
   return (
     <div className="main">
@@ -20,18 +25,18 @@ const MedalTable = () => {
         <div>
           <h1>2024 파리 올림픽</h1>
         </div>
-        <SortBtn sortValue={sortValue} setSortValue={setSortValue}></SortBtn>
+        <SortBtn sortValue={sortValue} setSortValue={setSortValue} />
         <MedalForm
           addRegion={addRegion}
           setAddRegion={setAddRegion}
           region={region}
           setRegions={setRegions}
-        ></MedalForm>
+        />
         <MedalList
           region={region}
           setRegions={setRegions}
           sortValue={sortValue}
-        ></MedalList>
+        />
       </div>
     </div>
   );

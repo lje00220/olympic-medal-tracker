@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { AddRegion } from "./AddList.jsx";
+import AddRegion from "./AddList.jsx";
 
 const MedalList = ({ region, setRegions, sortValue }) => {
   if (region.length === 0) {
@@ -27,4 +27,4 @@ const MedalList = ({ region, setRegions, sortValue }) => {
     </table>
   );
 };
-export { MedalList };
+export default MedalList;

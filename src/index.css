@@ -41,11 +41,14 @@ h1 {
 }
 
 .sortBtn {
-  /* background-color: red; */
   width: 200px;
   position: absolute;
   right: 10px;
   top: 30px;
+}
+
+.sortBtn > label {
+  padding-left: 10px;
 }
 
 .form {
@@ -95,7 +98,7 @@ p {
 }
 
 .region-list td {
-  padding: 5px;
+  padding: 7px;
   color: black;
 }
 
@@ -106,10 +109,12 @@ p {
   background-color: #e6e6fa;
 }
 
-.form .deleteBtn {
+.deleteBtn {
   width: 40px;
   height: 25px;
   background-color: #ea2323;
   color: white;
   font-weight: bold;
+  border: none;
+  border-radius: 5px;
 }
