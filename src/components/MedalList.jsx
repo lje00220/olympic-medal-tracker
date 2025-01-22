@@ -2,7 +2,7 @@
 
 import { AddRegion } from "./AddList.jsx";
 
-const MedalList = ({ region, setRegions }) => {
+const MedalList = ({ region, setRegions, sortValue }) => {
   if (region.length === 0) {
     return <p>아직 추가된 국가가 없습니다. 메달을 추적하세요!</p>;
   }
@@ -18,7 +18,11 @@ const MedalList = ({ region, setRegions }) => {
         </tr>
       </thead>
       <tbody>
-        <AddRegion region={region} setRegions={setRegions} />
+        <AddRegion
+          region={region}
+          setRegions={setRegions}
+          sortValue={sortValue}
+        />
       </tbody>
     </table>
   );
