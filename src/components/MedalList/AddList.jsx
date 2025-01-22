@@ -1,18 +1,31 @@
 /* eslint-disable */
 
+/**
+ * 메달 리스트를 정렬한 후 화면에 출력하는 컴포넌트
+ *
+ * @component
+ * @param {Object} props
+ * @param {Array<Object>} props.region - 메달 리스트 배열 (각 국가의 이름과 메달 갯수를 포함)
+ * @param {Function} props.setRegions - 메달 리스트를 업데이트하는 상태 설정 함수
+ * @param {string} props.sortValue - 정렬 기준(금메달 순 or 총합 순)
+ * @returns {JSX.Element}
+ */
+
 const AddRegion = ({ region, setRegions, sortValue }) => {
+  // 삭제한 객체 필터링 함수
   const handlerDelete = (deleteRegion) => {
     const deletedArr = region.filter((x) => x.region != deleteRegion);
     setRegions(deletedArr);
   };
 
+  // 정렬 로직 (금메달 순 or 총합 순)
   if (sortValue === "goldSort") {
     region.sort((x, y) => y.goldMedal - x.goldMedal);
   } else {
     region.sort((x, y) => {
-      const val1 = +x.goldMedal + +x.silverMedal + +x.bronzeMedal;
-      const val2 = +y.goldMedal + +y.silverMedal + +y.bronzeMedal;
-      return val2 - val1;
+      const sumX = +x.goldMedal + +x.silverMedal + +x.bronzeMedal;
+      const sumY = +y.goldMedal + +y.silverMedal + +y.bronzeMedal;
+      return sumY - sumX;
     });
   }
   return (

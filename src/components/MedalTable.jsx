@@ -1,9 +1,18 @@
 import { useState } from "react";
-import MedalList from "./MedalList.jsx";
-import MedalForm from "./MedalForm.jsx";
-import SortBtn from "./SortBtn.jsx";
+import MedalList from "./MedalList/MedalList.jsx";
+import MedalForm from "./MedalForm/MedalForm.jsx";
+import SortBtn from "./MedalList/SortBtn.jsx";
+
+/**
+ * 메달 집계를 관리하는 부모 컴포넌트
+ * - 메달 리스트의 상태 관리
+ * - 메달 리스트 localStorage 저장
+ *
+ * @returns {JSX.Element}
+ */
 
 const MedalTable = () => {
+  // input에서 입력한 값을 저장하는 객체
   const [addRegion, setAddRegion] = useState({
     region: "",
     goldMedal: 0,
@@ -11,10 +20,12 @@ const MedalTable = () => {
     bronzeMedal: 0,
   });
 
+  // 메달리스트를 저장하는 state(localStorage에서 불러온 데이터로 초기값 설정)
   const [region, setRegions] = useState([
     ...JSON.parse(localStorage.getItem("list")),
   ]);
 
+  // 정렬 방식을 저장하는 state(초기값: 금메달 순 정렬)
   const [sortValue, setSortValue] = useState("goldSort");
 
   localStorage.setItem("list", JSON.stringify(region));
