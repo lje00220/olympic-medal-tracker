@@ -1,7 +1,9 @@
+/* eslint-disable */
+
 import { AddRegion } from "./AddList.jsx";
 
-const MedalList = (p) => {
-  if (p.region.length === 0) {
+const MedalList = ({ region, setRegions }) => {
+  if (region.length === 0) {
     return <p>아직 추가된 국가가 없습니다. 메달을 추적하세요!</p>;
   }
   return (
@@ -16,7 +18,7 @@ const MedalList = (p) => {
         </tr>
       </thead>
       <tbody>
-        <AddRegion region={p.region} />
+        <AddRegion region={region} setRegions={setRegions} />
       </tbody>
     </table>
   );

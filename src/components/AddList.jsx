@@ -1,10 +1,13 @@
-const AddRegion = (p) => {
-  const handlerDelete = (region) => {
-    console.log(region);
+/* eslint-disable */
+
+const AddRegion = ({ region, setRegions }) => {
+  const handlerDelete = (deleteRegion) => {
+    const deletedArr = region.filter((x) => x.region != deleteRegion);
+    setRegions(deletedArr);
   };
   return (
     <>
-      {p.region
+      {region
         .sort((x, y) => y.goldMedal - x.goldMedal)
         .map((x, index) => (
           <tr key={index}>
@@ -15,7 +18,7 @@ const AddRegion = (p) => {
             <td>
               <button
                 className="deleteBtn"
-                onClick={() => handlerDelete(p.region.region)}
+                onClick={() => handlerDelete(x.region)}
               >
                 삭제
               </button>

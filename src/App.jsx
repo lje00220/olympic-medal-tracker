@@ -101,7 +101,7 @@ function App() {
               </tbody>
             </table>
           </form>
-          <MedalList region={region}></MedalList>
+          <MedalList region={region} setRegions={setRegions}></MedalList>
         </div>
       </div>
     </div>
