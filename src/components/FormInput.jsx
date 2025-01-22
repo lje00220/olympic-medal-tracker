@@ -14,7 +14,7 @@ const FormInput = ({ addRegion, setAddRegion, type = "number", name }) => {
         type={type}
         name={name}
         value={addRegion[name]}
-        placeholder={type === "text" ? "국가 입력" : "0"}
+        placeholder={type === "text" ? "국가 입력" : 0}
         min="0"
         onChange={handleChange}
       />

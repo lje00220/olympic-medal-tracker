@@ -43,7 +43,14 @@ const MedalForm = ({ addRegion, region, setRegions, setAddRegion }) => {
       }
       setRegions([...updateRegion]);
     }
+    setAddRegion({
+      region: "",
+      goldMedal: 0,
+      silverMedal: 0,
+      bronzeMedal: 0,
+    });
   };
+
   return (
     <div className="form">
       <form action="#" onSubmit={handleForm}>
