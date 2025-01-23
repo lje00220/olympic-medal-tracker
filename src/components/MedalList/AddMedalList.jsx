@@ -5,24 +5,24 @@
  *
  * @component
  * @param {Object} props
- * @param {Array<Object>} props.region - 메달 리스트 배열 (각 국가의 이름과 메달 갯수를 포함)
- * @param {Function} props.setRegions - 메달 리스트를 업데이트하는 상태 설정 함수
+ * @param {Array<Object>} props.medalList - 메달 리스트 배열 (각 국가의 이름과 메달 갯수를 포함)
+ * @param {Function} props.setMedalList - 메달 리스트를 업데이트하는 상태 설정 함수
  * @param {string} props.sortValue - 정렬 기준(금메달 순 or 총합 순)
  * @returns {JSX.Element}
  */
 
-const AddRegion = ({ region, setRegions, sortValue }) => {
+const AddMedalList = ({ medalList, setMedalList, sortValue }) => {
   // 삭제한 객체 필터링 함수
   const handlerDelete = (deleteRegion) => {
-    const deletedArr = region.filter((x) => x.region != deleteRegion);
-    setRegions(deletedArr);
+    const deletedArr = medalList.filter((x) => x.region != deleteRegion);
+    setMedalList(deletedArr);
   };
 
   // 정렬 로직 (금메달 순 or 총합 순)
   if (sortValue === "goldSort") {
-    region.sort((x, y) => y.goldMedal - x.goldMedal);
+    medalList.sort((x, y) => y.goldMedal - x.goldMedal);
   } else {
-    region.sort((x, y) => {
+    medalList.sort((x, y) => {
       const sumX = +x.goldMedal + +x.silverMedal + +x.bronzeMedal;
       const sumY = +y.goldMedal + +y.silverMedal + +y.bronzeMedal;
       return sumY - sumX;
@@ -30,7 +30,7 @@ const AddRegion = ({ region, setRegions, sortValue }) => {
   }
   return (
     <>
-      {region.map((x, index) => (
+      {medalList.map((x, index) => (
         <tr key={index}>
           <td>{x.region}</td>
           <td>{x.goldMedal}</td>
@@ -50,4 +50,4 @@ const AddRegion = ({ region, setRegions, sortValue }) => {
   );
 };
 
-export default AddRegion;
+export default AddMedalList;

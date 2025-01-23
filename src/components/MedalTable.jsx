@@ -13,7 +13,7 @@ import SortBtn from "./MedalList/SortBtn.jsx";
 
 const MedalTable = () => {
   // input에서 입력한 값을 저장하는 객체
-  const [addRegion, setAddRegion] = useState({
+  const [inputValue, setInputValue] = useState({
     region: "",
     goldMedal: 0,
     silverMedal: 0,
@@ -21,14 +21,14 @@ const MedalTable = () => {
   });
 
   // 메달리스트를 저장하는 state(localStorage에서 불러온 데이터로 초기값 설정)
-  const [region, setRegions] = useState([
-    ...JSON.parse(localStorage.getItem("list")),
-  ]);
+  const [medalList, setMedalList] = useState(
+    JSON.parse(localStorage.getItem("medal-list")) || []
+  );
 
   // 정렬 방식을 저장하는 state(초기값: 금메달 순 정렬)
   const [sortValue, setSortValue] = useState("goldSort");
 
-  localStorage.setItem("list", JSON.stringify(region));
+  localStorage.setItem("medal-list", JSON.stringify(medalList));
 
   return (
     <div className="main">
@@ -38,14 +38,14 @@ const MedalTable = () => {
         </div>
         <SortBtn sortValue={sortValue} setSortValue={setSortValue} />
         <MedalForm
-          addRegion={addRegion}
-          setAddRegion={setAddRegion}
-          region={region}
-          setRegions={setRegions}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          medalList={medalList}
+          setMedalList={setMedalList}
         />
         <MedalList
-          region={region}
-          setRegions={setRegions}
+          medalList={medalList}
+          setMedalList={setMedalList}
           sortValue={sortValue}
         />
       </div>

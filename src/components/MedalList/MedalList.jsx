@@ -1,21 +1,21 @@
 /* eslint-disable */
 
-import AddRegion from "./AddList.jsx";
+import AddMedalList from "./AddMedalList.jsx";
 
 /**
  * 메달 리스트 UI 컴포넌트
  *
  * @component
  * @param {Object} props
- * @param {Array<Object>} props.region - 메달 리스트 배열 (각 국가의 이름과 메달 갯수를 포함)
- * @param {Function} props.setRegions - 메달 리스트를 업데이트하는 상태 설정 함수
+ * @param {Array<Object>} props.medalList - 메달 리스트 배열 (각 국가의 이름과 메달 갯수를 포함)
+ * @param {Function} props.setMedalList - 메달 리스트를 업데이트하는 상태 설정 함수
  * @param {string} props.sortValue - 정렬 기준(금메달 순 or 총합 순)
  * @returns {JSX.Element}
  */
 
-const MedalList = ({ region, setRegions, sortValue }) => {
+const MedalList = ({ medalList, setMedalList, sortValue }) => {
   // 메달 리스트가 비어있을 경우 텍스트 출력
-  if (region.length === 0) {
+  if (medalList.length === 0) {
     return <p>아직 추가된 국가가 없습니다. 메달을 추적하세요!</p>;
   }
   return (
@@ -30,9 +30,9 @@ const MedalList = ({ region, setRegions, sortValue }) => {
         </tr>
       </thead>
       <tbody>
-        <AddRegion
-          region={region}
-          setRegions={setRegions}
+        <AddMedalList
+          medalList={medalList}
+          setMedalList={setMedalList}
           sortValue={sortValue}
         />
       </tbody>
