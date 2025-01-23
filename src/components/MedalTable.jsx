@@ -21,6 +21,7 @@ const MedalTable = () => {
   });
 
   // 메달리스트를 저장하는 state(localStorage에서 불러온 데이터로 초기값 설정)
+  // localStorage에 값이 존재하지 않을 경우 빈 배열로 설정
   const [medalList, setMedalList] = useState(
     JSON.parse(localStorage.getItem("medal-list")) || []
   );
