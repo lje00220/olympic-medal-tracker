@@ -25,7 +25,7 @@ const SortBtn = ({ setSortValue }) => {
           onChange={handlerSort}
           defaultChecked
         />{" "}
-        금메달 순
+        금메달순
       </label>
       <label>
         <input
@@ -34,7 +34,7 @@ const SortBtn = ({ setSortValue }) => {
           value="sumSort"
           onChange={handlerSort}
         />{" "}
-        총합 순
+        총합순
       </label>
     </div>
   );
