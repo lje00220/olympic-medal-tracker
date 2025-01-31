@@ -30,7 +30,7 @@ const MedalForm = ({ inputValue, medalList, setMedalList, setInputValue }) => {
 
     if (action === "addList") {
       // 국가 추가 버튼 클릭 시 중복 여부 확인 후 메달 리스트에 추가
-      medalList.map((x) => {
+      medalList.forEach((x) => {
         if (x.region === inputValue.region) {
           alert("이미 존재하는 국가입니다!");
           isInclude = true;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import MedalList from "./MedalList/MedalList.jsx";
 import MedalForm from "./MedalForm/MedalForm.jsx";
 import SortBtn from "./MedalList/SortBtn.jsx";
+import { useEffect } from "react";
 
 /**
  * 메달 집계를 관리하는 부모 컴포넌트
@@ -29,7 +30,11 @@ const MedalTable = () => {
   // 정렬 방식을 저장하는 state(초기값: 금메달 순 정렬)
   const [sortValue, setSortValue] = useState("goldSort");
 
-  localStorage.setItem("medal-list", JSON.stringify(medalList));
+  // medalList가 변경될 때 localStorage에 저장
+  useEffect(() => {
+    localStorage.setItem("medal-list", JSON.stringify(medalList));
+    console.log("hello");
+  }, [medalList]);
 
   return (
     <div className="main">
